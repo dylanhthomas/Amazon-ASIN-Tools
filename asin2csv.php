@@ -10,7 +10,7 @@ require 'AmazonECS.class.php';
 //Create instance of AmazonECS class
 $amazonEcs = new AmazonECS(AWS_API_KEY, AWS_API_SECRET_KEY, 'US', AWS_ASSOCIATE_TAG );
 
-//Form Page
+//If there is no form data, show the Form Page
 if(!isset($_REQUEST['asin'])){
 
 echo "
@@ -56,7 +56,7 @@ y give you an error.<br><br>If this happens, wait until the top of the hour and 
 
 
 
-
+//If there is form data, process it
 else {
 
     //Remove any leading and trailing whitespace from the submission and put all values into an array
