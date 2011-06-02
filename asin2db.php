@@ -1,6 +1,6 @@
 <?php
 
-/* This script will take a list of ASINs and create a database record containing the ASIN, Title, Author(s), Publisher, and Current Price for each ASIN provided.
+/* This script will take a list of ASINs and create a database record containing the ASIN, Title, Author(s), Publisher, Current Price, Item URL, and the Small Image for each ASIN provided.
 
 It will check to see if the ASIN exists in the database.  If it does, it will move on. It will NOT update the record.  If the ASIN does not exist in the database, it will be added
 */
@@ -62,6 +62,7 @@ li>Current Price (Formatted)</li>
 
 
 
+//If there is form data, process it
 else {
 
 trimASIN($_REQUEST['asin']);

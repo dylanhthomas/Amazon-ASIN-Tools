@@ -1,0 +1,14 @@
+-- This is the SQL create statement for a table to house all the information gathered by the ASIN Database scripts.
+-- Pay special notice to the IMAGE field. If you want to specify a default image if Amazon does not have one, put the url here.  If not, delete the default.
+
+CREATE TABLE books (
+  ID smallint(4) NOT NULL AUTO_INCREMENT,
+  ASIN varchar(16) NOT NULL,
+  TITLE varchar(256) NOT NULL,
+  AUTHOR varchar(256) NOT NULL,
+  PUBLISHER varchar(256) NOT NULL,
+  URL varchar(512) NOT NULL DEFAULT '#' COMMENT 'Amazon Detail URL',
+  IMAGE varchar(512) NOT NULL DEFAULT '*******PUT DEFAULT IMAGE URL HERE*******' COMMENT 'Amazon SmallImage URL',
+  PRICE varchar(8) NOT NULL,
+  PRIMARY KEY (ID)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
