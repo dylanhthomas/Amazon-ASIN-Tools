@@ -26,17 +26,20 @@ function processASIN($response){
 }
 
 
+
+//Function: Remove whitespace from the submission (which interferes with processing) and separate all values into an array
 function trimASIN($asin){
+    //Global variable passed back to script
     global $ASINs;
 
-    //remove spaces from arrays
-    function trim_value(&$value)
-        {$value = trim($value);}
+    //Function: Remove spaces
+    function trim_value(&$value){
+        $value = trim($value);
+    }
 
-
-    //$text = trim($_REQUEST['asin']);
+    //Put each value into an array
 	$ASINs = explode(PHP_EOL,$asin);
-
+    //Remove spaces from each array value
 	array_walk($ASINs, 'trim_value');
 
 }
