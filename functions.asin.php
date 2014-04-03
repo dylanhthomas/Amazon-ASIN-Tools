@@ -1,11 +1,17 @@
 <?php
 
 function processASIN($response){
-    global $TITLE,$AUTHORS,$IMAGE,$PUBLISHER,$URL,$PRICE;
+    //print_r($response);    //Print out response object for debugging purposes
+
+    global $TITLE,$AUTHORS,$IMAGE,$PUBLISHER,$URL,$PRICE,$AVAILABILITY,$AVAILABILITY_TYPE;
 
     //Process Title
     $TITLE_RAW=$response->Items->Item->ItemAttributes->Title;
     $TITLE= htmlspecialchars($TITLE_RAW, ENT_QUOTES);
+
+    //Process Availability
+    $AVAILABILITY=$response->Items->Item->Offers->Offer->OfferListing->Availability;
+    $AVAILABILITY_TYPE=$response->Items->Item->Offers->Offer->OfferListing->AvailabilityAttributes->AvailabilityType;
 
     //Process Authors, check for multiple authors
     if (is_array($response->Items->Item->ItemAttributes->Author)){$AUTHORS=htmlspecialchars(implode(', ',$response->Items->Item->ItemAttributes->Author),ENT_QUOTES);}

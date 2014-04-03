@@ -67,14 +67,14 @@ else {
     header('Content-disposition: attachment;filename=booklist.csv');
     header('Pragma: public');
     //Output header row
-    echo "ASIN,Title,Author,Publisher,Price".PHP_EOL;
+    echo "ASIN,Title,Author,Publisher,Price,Availability, Availability Type".PHP_EOL;
 
     //Lookup and output individual records
     foreach($ASINs as $ASIN){
-        $response = $amazonEcs->responseGroup('ItemAttributes')->lookup($ASIN);
+        $response = $amazonEcs->responseGroup('Large')->lookup($ASIN);
         processASIN($response);
         //CSV Output
-        echo '"'.$ASIN.'","'.$TITLE.'","'.$AUTHORS.'","'.$PUBLISHER.'","'.$PRICE.'"'.PHP_EOL;
+        echo '"'.$ASIN.'","'.$TITLE.'","'.$AUTHORS.'","'.$PUBLISHER.'","'.$PRICE.'","'.$AVAILABILITY.'","'.$AVAILABILITY_TYPE.'"'.PHP_EOL;
     }
 }
 ?>
